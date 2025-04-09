@@ -6,18 +6,47 @@ import { store } from "./app/store"
 import "@heroui/theme"
 import "./index.css"
 import { HeroUIProvider } from "@heroui/react";
-import { createBrowserRouter } from "react-router-dom"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { ThemeProvider } from "./components/theme-provider"
+import { Auth } from "./pages/auth"
+import { Layout } from "./components/layout"
+import { Posts } from "./pages/posts"
+import { CurrentPost } from "./pages/current-post"
+import { UserProfile } from "./pages/user-profile"
+import { Followers } from "./pages/followers"
+import { Following } from "./pages/following"
 
 
 const router = createBrowserRouter([
   {
     path: '/auth',
-    element: <h1>Auth</h1>
+    element: <Auth />
   },
   {
     path: '/',
-    element: <h1>Layout</h1>
+    element: <Layout />,
+    children: [
+      {
+        path: '',
+        element: <Posts />
+      },
+      {
+        path: 'users/:id',
+        element: <UserProfile />
+      },
+      {
+        path: 'posts/:id',
+        element: <CurrentPost />
+      },
+      {
+        path: 'followers',
+        element: <Followers />
+      },
+      {
+        path: 'following',
+        element: <Following />
+      },
+    ]
   }
 ])
 
@@ -32,7 +61,7 @@ if (container) {
       <Provider store={store}>
         <HeroUIProvider>
           <ThemeProvider>
-            <App />
+            <RouterProvider router={ router } />
           </ThemeProvider>
         </HeroUIProvider>
       </Provider>
