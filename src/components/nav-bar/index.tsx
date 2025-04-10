@@ -2,7 +2,7 @@ import React from 'react'
 import { NavButton } from '../nav-button'
 import { BsPostcard } from 'react-icons/bs'
 import { FiUsers } from 'react-icons/fi'
-import { FaUser, FaUsers } from 'react-icons/fa'
+import { FaUsers } from 'react-icons/fa'
 
 export const NavBar = () => {
   return (
