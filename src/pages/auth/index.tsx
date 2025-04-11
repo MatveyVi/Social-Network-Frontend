@@ -1,5 +1,7 @@
 import { Card, CardBody, Tab, Tabs } from '@heroui/react'
 import React, { useState } from 'react'
+import { Login } from '../../features/login'
+import { Register } from '../../features/register'
 
 export const Auth = () => {
   const [selected, setSelected] = useState('login')
@@ -16,10 +18,10 @@ export const Auth = () => {
               onSelectionChange={(key) => setSelected(key as string)}
             >
               <Tab key='login' title='Вход'>
-                Вход
+                <Login setSelected={setSelected}/>
               </Tab>
               <Tab key='sign-up' title='Регистрация'>
-                Регистрация
+                <Register setSelected={setSelected}/>
               </Tab>
             </Tabs>
           </CardBody>
