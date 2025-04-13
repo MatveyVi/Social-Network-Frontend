@@ -17,15 +17,15 @@ export const Profile = () => {
 
     return (
         <Card className='py-4 w-[302px]'>
-            <CardHeader className='pb-0 pt-2 px-4 flex-col items-center'>
+            <CardHeader className='pb-0 pt-2 px-1 flex-col items-center'>
                 <Image
                     alt='Card profile'
                     className='object-cover rounded-xl'
                     src={`${BASE_URL}${avatarUrl}`}
-                    width={370}
+                    width={250}
                 />
             </CardHeader>
-            <CardBody>
+            <CardBody className='px-5'>
                 <Link to={`/users/${id}`}>
                     <h4 className="font-bold text-large mt-2 mb-1">{name}</h4>
                 </Link>
