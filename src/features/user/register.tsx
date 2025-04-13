@@ -1,10 +1,10 @@
 import { Button, Link } from '@heroui/react';
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
-import { Input } from '../components/input';
-import { useRegisterMutation } from '../app/services/userApi';
-import { hasErrorField } from '../utils/has-error-field';
-import { ErrorMessage } from '../components/error-message';
+import { Input } from '../../components/input';
+import { useRegisterMutation } from '../../app/services/userApi';
+import { hasErrorField } from '../../utils/has-error-field';
+import { ErrorMessage } from '../../components/error-message';
 
 type Register = {
     email: string;
@@ -54,7 +54,7 @@ export const Register: React.FC<Props> = ({
             <Input
                 control={control}
                 name='name'
-                label='Name'
+                label='Имя'
                 type='text'
                 required='Обязательное поле'
             />
