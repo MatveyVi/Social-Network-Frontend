@@ -7,6 +7,7 @@ import { logout, selectIsAuthenticated } from '../../features/user/userSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { CiLogout } from 'react-icons/ci'
+import { SITE_NAME } from '../../constants'
 
 export const Header = () => {
     const { theme, toggleTheme } = useContext(ThemeContext)
@@ -23,7 +24,7 @@ export const Header = () => {
     return (
     <Navbar>
         <NavbarBrand>
-            <p className="font-bold text-inherit">MIHIRA Entartaiments</p>
+            <p className="font-bold text-inherit">{SITE_NAME}</p>
         </NavbarBrand>
         <NavbarContent justify='end' className='gap-10'>
             <NavbarItem

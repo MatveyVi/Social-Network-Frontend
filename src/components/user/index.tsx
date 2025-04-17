@@ -1,5 +1,5 @@
 import React from 'react'
-import { User as HeroUiUser} from "@heroui/react";
+import { User as HeroUiUser } from "@heroui/react";
 import { BASE_URL } from '../../constants';
 
 
@@ -13,18 +13,18 @@ type Props = {
 
 export const User: React.FC<Props> = ({
     name = '',
-    avatarUrl='',
-    description= '',
+    avatarUrl = '',
+    description = '',
     className = '',
 }) => {
-  return (
-    <HeroUiUser 
-        name={name}
-        className={className}
-        description={description}
-        avatarProps={{
-            src: `${BASE_URL}${avatarUrl}`
-        }}
-    />
-  )
+    return (
+        <HeroUiUser
+            name={name}
+            className={className}
+            description={description}
+            avatarProps={{
+                src: `${BASE_URL}${avatarUrl}`
+            }}
+        />
+    )
 }
