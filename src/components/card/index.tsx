@@ -56,7 +56,7 @@ export const Card: React.FC<Props> = ({
   const currentUser = useSelector(selectCurrent)
 
   const refetchPosts = async () => {
-    switch(cardFor) {
+    switch (cardFor) {
       case 'post':
         await triggerGetAllPosts().unwrap()
         break
@@ -71,10 +71,26 @@ export const Card: React.FC<Props> = ({
     }
   }
 
+  const handleClick = async () => {
+    try {
+      likedByUser
+        ? await unlikePost(id).unwrap()
+        : await likePost({ postId: id }).unwrap()
+
+      await refetchPosts()
+    } catch (error) {
+      if (hasErrorField(error)) {
+        setError(error.data.error)
+      } else {
+        setError(error as string)
+      }
+    }
+  }
+
   const handleDelete = async () => {
     try {
       switch (cardFor) {
-        case 'post': 
+        case 'post':
           await deletePost(id).unwrap()
           await refetchPosts()
           break
@@ -86,12 +102,12 @@ export const Card: React.FC<Props> = ({
           await deleteComment(id).unwrap()
           await refetchPosts()
           break
-        default: 
+        default:
           throw new Error('Неверный аргумент cardFor')
       }
 
     } catch (error) {
-      if(hasErrorField(error)) {
+      if (hasErrorField(error)) {
         setError(error.data.error)
       } else {
         setError(error as string)
@@ -131,7 +147,7 @@ export const Card: React.FC<Props> = ({
         cardFor !== 'comment' && (
           <CardFooter className='gap-3'>
             <div className="div flex gap-5 items-center">
-              <div>
+              <div onClick={handleClick}>
                 <MetaInfo
                   count={likesCount}
                   Icon={likedByUser ? FcDislike : MdOutlineFavoriteBorder} />
