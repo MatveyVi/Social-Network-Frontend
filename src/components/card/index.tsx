@@ -99,7 +99,7 @@ export const Card: React.FC<Props> = ({
           navigate('/')
           break
         case 'comment':
-          await deleteComment(id).unwrap()
+          await deleteComment(commentId).unwrap()
           await refetchPosts()
           break
         default:
@@ -144,7 +144,7 @@ export const Card: React.FC<Props> = ({
         <Typography>{content}</Typography>
       </CardBody>
       {
-        cardFor !== 'comment' || 'current-post' && (
+        cardFor !== 'comment' && (
           <CardFooter className='gap-3'>
             <div className="div flex gap-5 items-center">
               <div onClick={handleClick}>
