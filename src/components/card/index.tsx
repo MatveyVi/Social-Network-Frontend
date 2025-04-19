@@ -144,7 +144,7 @@ export const Card: React.FC<Props> = ({
         <Typography>{content}</Typography>
       </CardBody>
       {
-        cardFor !== 'comment' && (
+        cardFor !== 'comment' || 'current-post' && (
           <CardFooter className='gap-3'>
             <div className="div flex gap-5 items-center">
               <div onClick={handleClick}>
