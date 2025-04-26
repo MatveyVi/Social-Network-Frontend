@@ -46,6 +46,18 @@ export const UserProfile = () => {
     }
   }
 
+  const handleClose = async () => {
+    try {
+      if (id) {
+        await triggerGetUserByIdQuery(id)
+        await triggerCurrentQuery()
+        onClose()
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   if (!data) {
     return null
   }
@@ -100,7 +112,7 @@ export const UserProfile = () => {
           </div>
         </Card> 
       </div>
-      <EditProfile isOpen={isOpen} onClose={onClose} user={data} />
+      <EditProfile isOpen={isOpen} onClose={handleClose} user={data} />
     </>
   )
 }
